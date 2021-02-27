@@ -1,14 +1,33 @@
-import { useContext } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import ChallengesContext from '../Contexts/ChallengesContext'
 import styles from '../styles/components/Profile.module.css'
+import Cookies from 'js-cookie'
+
+interface UserType {
+  name: string,
+  avatar: string
+}
 
 export default function Profile() {
   const { level } = useContext(ChallengesContext)
+  const [user, setUser] = useState({} as UserType)
+
+  useEffect(() => {
+    const name = Cookies.get('name')
+    const avatar = Cookies.get('avatar')
+
+    setUser({
+      name,
+      avatar
+    })
+  }, [])
+
   return (
+
     <div className={styles.profileContainer}>
-      <img src="https://randomuser.me/api/portraits/men/46.jpg" alt="Profile"/>
+      <img src={user.avatar} alt="Profile"/>
       <div>
-        <strong>John Doe</strong>
+        <strong>{user.name}</strong>
         <p>
           <img src="icons/level.svg" alt="Level" />
           Level { level }</p>

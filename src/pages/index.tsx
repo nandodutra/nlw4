@@ -1,11 +1,10 @@
 import Head from 'next/head'
-import { useContext } from 'react'
 import ChallengeBox from '../components/ChallengeBox'
 import CompleteChallenges from '../components/CompleteChallenges'
 import Countdown from '../components/Countdown'
 import ExperienceBar from '../components/ExperienceBar'
 import Profile from '../components/Profile'
-import ChallengesContext, { ChallengesProvider } from '../Contexts/ChallengesContext'
+import { ChallengesProvider } from '../Contexts/ChallengesContext'
 import { CountdownProvider } from '../Contexts/CountdownContext'
 import styles from '../styles/pages/Home.module.css'
 
