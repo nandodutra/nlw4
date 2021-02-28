@@ -27,11 +27,20 @@ export default async (req: NowRequest, res: NowResponse) => {
   const userCollection = db.collection('challenges')
 
   const user = await userCollection.findOne({ user_id: user_id })
-  const { level, currentExperience, challengesCompleted } = user
 
-  return res.json({ 
-    level,
-    currentExperience, 
-    challengesCompleted 
-  })
+  if (user) {
+    const { level, currentExperience, challengesCompleted } = user
+
+    return res.json({ 
+      level,
+      currentExperience, 
+      challengesCompleted 
+    })
+  } else {
+    return res.json({ 
+      level: 1,
+      currentExperience: 0, 
+      challengesCompleted: 0
+    })
+  }
 }
