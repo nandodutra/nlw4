@@ -9,8 +9,8 @@ Repositório de estudo na nlw4 da RocketSeat
 Para obter uma cópia local do repositório
 
 ```shell
-  git clone git@github.com:nandodutra/nlw4.git
-  yarn
+$ git clone git@github.com:nandodutra/nlw4.git
+$ yarn
 ```
 
 ## Desenvolvimento 
@@ -37,6 +37,6 @@ Para obter o client_id e secret_id, é necessário habilitar seu aplicativo no
 github em: Settings > Developer settings > OAuth Apps.
 
 ```shell
-  cd nlw4/
-  yarn dev
+$ cd nlw4/
+$ yarn dev
 ```
