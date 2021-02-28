@@ -41,6 +41,14 @@ export default function Ranking() {
                 <td><span>{row.challengesCompleted}</span> completados</td>
               </tr>
             )) }
+
+            { !list.length && (
+              <tr>
+                <td className={styles.loading} colSpan={3}>
+                  <p>carregando ranking...</p>
+                </td>
+              </tr>
+            ) }
           </tbody>
         </table>
       </div>

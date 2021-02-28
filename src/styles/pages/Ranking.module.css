@@ -40,3 +40,9 @@
   width: 30px;
   text-align: center;
 }
+
+.container table tbody .loading p {
+  color: var(--blue);
+  text-align: center;
+  padding: 1.5rem;
+}
