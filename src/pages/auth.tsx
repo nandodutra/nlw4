@@ -77,9 +77,10 @@ export default function Auth() {
               onChange={(evt) => setLogin(evt.target.value) } 
               onKeyUp={ inputKeyUpHandle }
               />
-            <button onClick={signin}>
-              Logar
-            </button>
+            { login.length >= 3 ? (
+                <button className={styles.activeButton} onClick={signin}>Logar</button>
+              ) : (<button disabled onClick={signin}>Logar</button>) }
+            
           </div>
         </div>
       </div>

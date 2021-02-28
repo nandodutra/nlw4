@@ -67,6 +67,11 @@
   padding: 10px 15px;
 }
 
+.activeButton {
+  color: var(--white) !important;
+  background: var(--green) !important;
+}
+
 @media (max-width: 1100px) {
   .container > img {
     max-width: 30rem;

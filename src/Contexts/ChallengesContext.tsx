@@ -54,8 +54,7 @@ export function ChallengesProvider({
     
     if (!user_id || !user_access_token) {
       Router.push('/auth')
-    }
-
+    }    
   }, [])
 
   useEffect(() => {
@@ -68,7 +67,6 @@ export function ChallengesProvider({
     const user_name = Cookies.get('user_name')
     const user_login = Cookies.get('user_login')
     
-
     axios.post('/api/challenge-save-data', {
       user_avatar,
       user_name,

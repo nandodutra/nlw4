@@ -8,6 +8,7 @@ import Profile from '../components/Profile'
 import { ChallengesProvider } from '../Contexts/ChallengesContext'
 import { CountdownProvider } from '../Contexts/CountdownContext'
 import styles from '../styles/pages/Home.module.css'
+import Sidebar from '../components/Sidebar'
 
 interface HomeProps {
   level: number,
@@ -25,29 +26,34 @@ export default function Home({ level, currentExperience, challengesCompleted }: 
       level={level} 
       currentExperience={currentExperience} 
       challengesCompleted={challengesCompleted}>
-      <div className={styles.container}>
+      
         <Head>
           <title>Move it</title>
         </Head>
 
-        { (user_id && user_access_token) && (
-          <>
-            <ExperienceBar />
-            <CountdownProvider>
-              <section>
-                <div>
-                  <Profile />
-                  <CompleteChallenges />
-                  <Countdown />
-                </div>
-                <div>
-                  <ChallengeBox />
-                </div>
-              </section>
-            </CountdownProvider>
-          </>) 
+        { (user_id && user_access_token) ? (
+          <div className={styles.main}>
+            <Sidebar />
+          
+            <div className={styles.container}>
+              <ExperienceBar />
+              <CountdownProvider>
+                <section>
+                  <div>
+                    <Profile />
+                    <CompleteChallenges />
+                    <Countdown />
+                  </div>
+                  <div>
+                    <ChallengeBox />
+                  </div>
+                </section>
+              </CountdownProvider>
+            </div>
+          </div>
+          ) : (<p>Carregando...</p>)
         }
-      </div>
+
     </ChallengesProvider>
     </>
   )

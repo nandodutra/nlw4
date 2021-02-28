@@ -1,0 +1,53 @@
+.Sidebar {
+  width: 120px;
+  height: 100vh;
+  background: var(--white);
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+}
+
+.Sidebar > a img {
+  display: block;
+  width: 3rem;
+  margin: 40px auto;
+}
+
+.Sidebar > nav {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  margin-top: -5rem;
+}
+
+.Sidebar nav ul {
+  width: 100%;
+}
+
+.Sidebar nav ul li {
+  display: flex;
+}
+
+.Sidebar nav ul li a {
+  flex: 1;
+  text-align: center;
+  padding: 0.7rem 1rem;
+  position: relative;
+}
+
+.Sidebar nav ul li a div {
+  width: 20px;
+  height: 100%;
+  border-radius: 7px;
+  background: var(--blue-dark);
+  position: absolute;
+  top: 0;
+  left: -15px;
+}
+
+.Sidebar nav ul li a img {
+  color: blue;
+  fill: blue;
+}
