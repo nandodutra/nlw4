@@ -33,7 +33,7 @@ export default function Home({ level, currentExperience, challengesCompleted }: 
 
         { (user_id && user_access_token) ? (
           <div className={styles.main}>
-            <Sidebar />
+            <Sidebar active="home" />
           
             <div className={styles.container}>
               <ExperienceBar />

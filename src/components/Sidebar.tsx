@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import styles from '../styles/components/Sidebar.module.css'
 
-export default function Sidebar() {
-  const [active, setActive] = useState('home')
+export default function Sidebar({ active }) {
+  
 
   return (
     <div className={styles.Sidebar}>
@@ -16,18 +16,18 @@ export default function Sidebar() {
                 <div />
                 <img src="./icons/home-blue.svg" alt="Home"/>
               </a>) : (
-                <a href="#">
+                <a href="/">
                   <img src="./icons/home.svg" alt="Home"/>
                 </a>
               ) }
           </li>
           <li>
-            { active === 'best' ? (
+            { active === 'ranking' ? (
               <a href="#">
                 <div />
                 <img src="./icons/best-blue.svg" alt="Melhores"/>
               </a>) : (
-                <a href="#">
+                <a href="/ranking">
                   <img src="./icons/best.svg" alt="Melhores"/>
                 </a>
               ) }
