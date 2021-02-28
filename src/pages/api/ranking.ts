@@ -22,7 +22,7 @@ let cachedDb: Db = null
 export default async (req: NowRequest, res: NowResponse) => {
   const db = await connectDatabase(process.env.MONGODB_STRING_CONNECTION)
 
-  const top10 = await db.collection('challenges').find({ user_id: { $exists: true }  }).limit(10).sort({ level: -1 }).toArray()
+  const top10 = await db.collection('challenges').find({ user_id: { $exists: true }  }).limit(10).sort({ level: -1, currentExperience: -1, challengesCompleted: -1 }).toArray()
 
   return res.json(top10)
 }

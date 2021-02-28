@@ -1,9 +1,6 @@
-import { useState } from 'react'
 import styles from '../styles/components/Sidebar.module.css'
 
 export default function Sidebar({ active }) {
-  
-
   return (
     <div className={styles.Sidebar}>
       <a href="/"><img src="./logo-blue.svg" alt="Move.it" /></a>

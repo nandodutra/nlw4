@@ -3,10 +3,11 @@
 }
 
 .container {
-  height: calc(100vh - 100px);
+  height: calc(100vh - 50px);
   width: 100%;
   max-width: 960px;
   margin: 0 auto;
+  margin-bottom: 3rem;
   padding: 2.5rem 2rem;
   display: flex;
   flex-direction: column;
@@ -37,6 +38,7 @@
 }
 
 .container table tbody td:first-child {
+  font-size: 1.5rem;
   width: 30px;
   text-align: center;
 }
@@ -45,4 +47,34 @@
   color: var(--blue);
   text-align: center;
   padding: 1.5rem;
+}
+
+.profileContainer {
+  display: flex;
+  align-items: center;
+}
+
+.profileContainer > img {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+}
+
+.profileContainer div {
+  margin-left: 1.5rem;
+}
+
+.profileContainer div strong {
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--title)
+}
+
+.profileContainer div p {
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
+
+.profileContainer div p img {
+  margin-right: 0.5rem;
 }

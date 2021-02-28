@@ -1,14 +1,18 @@
-import { useContext, useEffect } from 'react'
+import Head from 'next/head'
+import React, { useContext, useEffect } from 'react'
 import Sidebar from '../components/Sidebar'
 import RankingContext from '../Contexts/RankingContext'
 import styles from '../styles/pages/Ranking.module.css'
-import profileStyles from '../styles/components/Profile.module.css'
 
 export default function Ranking() {
   const { list } = useContext(RankingContext)
 
   return (
     <div className={styles.main}>
+      <Head>
+        <title>Move.it - Ranking</title>
+      </Head>
+
       <Sidebar active="ranking" />
 
       <div className={styles.container}>
@@ -28,7 +32,7 @@ export default function Ranking() {
               <tr key={row._id}>
                 <td>{index + 1}</td>
                 <td>
-                  <div className={profileStyles.profileContainer}>
+                  <div className={styles.profileContainer}>
                     <img src={row.user_avatar} alt="Profile"/>
                     <div>
                       <strong>{row.user_name}</strong>
