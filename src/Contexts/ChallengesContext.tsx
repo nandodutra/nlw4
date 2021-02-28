@@ -2,6 +2,8 @@ import { createContext, useState, ReactNode, useContext, useEffect } from 'react
 import challenges from '../../challenges.json'
 import LevelUpModal from '../components/LevelUpModal'
 import Cookies from 'js-cookie'
+import axios from 'axios'
+import { useRouter } from 'next/router'
 
 interface ChallengesProvideProps { 
   children: ReactNode,
@@ -36,6 +38,7 @@ export function ChallengesProvider({
   children, 
   ...rest 
 } : ChallengesProvideProps) {
+  const Router = useRouter()
   const [level, setLevel] = useState(rest.level || 1)
   const [currentExperience, setCurrentExperience] = useState(rest.currentExperience || 0)
   const [challengesCompleted, setChallengesCompleted] = useState(rest.challengesCompleted || 0)
@@ -45,12 +48,37 @@ export function ChallengesProvider({
 
   useEffect(() => {
     Notification.requestPermission()
+
+    const user_id = Cookies.get('user_id')
+    const user_access_token = Cookies.get('user_access_token')
+    
+    if (!user_id || !user_access_token) {
+      Router.push('/auth')
+    }
+
   }, [])
 
   useEffect(() => {
     Cookies.set('level', String(level))
     Cookies.set('currentExperience', String(currentExperience))
     Cookies.set('challengesCompleted', String(challengesCompleted))
+
+    const user_id = Cookies.get('user_id')
+    const user_avatar = Cookies.get('user_avatar')
+    const user_name = Cookies.get('user_name')
+    const user_login = Cookies.get('user_login')
+    
+
+    axios.post('/api/challenge-save-data', {
+      user_avatar,
+      user_name,
+      user_login,
+      user_id,
+      level, 
+      currentExperience, 
+      challengesCompleted
+    }).then()
+
   }, [level, currentExperience, challengesCompleted])
 
   function levelUp() {

@@ -1,9 +1,14 @@
 import Head from 'next/head'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import styles from '../styles/pages/Auth.module.css'
 
+const OAUTH_REDIRECT_URI = process.env.NEXT_PUBLIC_OAUTH_REDIRECT_URI
+
 export default function Auth() {
-  const [email, setEmail] = useState('');
+  const [login, setLogin] = useState('');
+  const [oauth, setOauth] = useState({
+    client_id: process.env.OAUTH_CLIENT_ID,
+  })
   
   function toParams(query) {
     const q = query.replace(/^\??\//, '');
@@ -31,18 +36,20 @@ export default function Auth() {
     }, '');
   }
 
-  function login() {
-    const id = 'github-oauth-authorize'
-
+  function signin() {
     const search = toQuery({
-      client_id: '47f0c12576a2ec0e6fc6',
-      scope: 'user:email',
-      redirect_uri: 'http://localhost:3000/api/auth-callback',
+      client_id: process.env.NEXT_PUBLIC_OAUTH_CLIENT_ID,
+      scope: process.env.NEXT_PUBLIC_OAUTH_SCOPE,
+      login: login,
+      redirect_uri: process.env.NEXT_PUBLIC_OAUTH_REDIRECT_URI,
     });
 
     const url = `https://github.com/login/oauth/authorize?${search}`
     window.location.href = url
-    //window.open(url, id, toQuery({ width: 600, heigth: 1000 }, ','));
+  }
+
+  function inputKeyUpHandle(evt) {
+    if (evt.code === 'Enter') signin()
   }
 
   return (
@@ -66,10 +73,11 @@ export default function Auth() {
             <input 
               type="text" 
               placeholder="Digite seu username"
-              value={email}
-              onChange={(evt) => setEmail(evt.target.value) } 
+              value={login}
+              onChange={(evt) => setLogin(evt.target.value) } 
+              onKeyUp={ inputKeyUpHandle }
               />
-            <button onClick={login}>
+            <button onClick={signin}>
               Logar
             </button>
           </div>

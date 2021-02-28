@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Cookies from 'js-cookie'
 import ChallengeBox from '../components/ChallengeBox'
 import CompleteChallenges from '../components/CompleteChallenges'
 import Countdown from '../components/Countdown'
@@ -15,7 +16,11 @@ interface HomeProps {
 }
 
 export default function Home({ level, currentExperience, challengesCompleted }: HomeProps) {
+  const user_id = Cookies.get('user_id')
+  const user_access_token = Cookies.get('user_access_token')
+
   return (
+    <>
     <ChallengesProvider 
       level={level} 
       currentExperience={currentExperience} 
@@ -25,22 +30,26 @@ export default function Home({ level, currentExperience, challengesCompleted }: 
           <title>Move it</title>
         </Head>
 
-        <ExperienceBar />
-
-        <CountdownProvider>
-          <section>
-            <div>
-              <Profile />
-              <CompleteChallenges />
-              <Countdown />
-            </div>
-            <div>
-              <ChallengeBox />
-            </div>
-          </section>
-        </CountdownProvider>
+        { (user_id && user_access_token) && (
+          <>
+            <ExperienceBar />
+            <CountdownProvider>
+              <section>
+                <div>
+                  <Profile />
+                  <CompleteChallenges />
+                  <Countdown />
+                </div>
+                <div>
+                  <ChallengeBox />
+                </div>
+              </section>
+            </CountdownProvider>
+          </>) 
+        }
       </div>
     </ChallengesProvider>
+    </>
   )
 }
 

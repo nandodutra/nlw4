@@ -13,8 +13,8 @@ export default function Profile() {
   const [user, setUser] = useState({} as UserType)
 
   useEffect(() => {
-    const name = Cookies.get('name')
-    const avatar = Cookies.get('avatar')
+    const name = Cookies.get('user_name')
+    const avatar = Cookies.get('user_avatar')
 
     setUser({
       name,
